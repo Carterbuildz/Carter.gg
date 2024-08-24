@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Game Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Fun Games!</h1>
+        <nav>
+            <ul>
+                <li><a href="#game1">Game 1</a></li>
+                <li><a href="#game2">Game 2</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="game1">
+            <h2>Game 1: Click the Button</h2>
+            <button onclick="clickGame()">Click Me!</button>
+            <p id="clickCount">Clicks: 0</p>
+        </section>
+
+        <section id="game2">
+            <h2>Game 2: Guess the Number</h2>
+            <input type="number" id="guessInput" placeholder="Enter a number" />
+            <button onclick="guessNumber()">Guess</button>
+            <p id="guessResult"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Fun Game Website</p>
+    </footer>
+
+    <script>
+        // Game 1: Click the Button
+        let clickCount = 0;
+
+        function clickGame() {
+            clickCount++;
+            document.getElementById('clickCount').innerText = `Clicks: ${clickCount}`;
+        }
+
+        // Game 2: Guess the Number
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+
+        function guessNumber() {
+            const userGuess = parseInt(document.getElementById('guessInput').value);
+            let message = '';
+
+            if (userGuess === secretNumber) {
+                message = 'Congratulations! You guessed the number!';
+            } else if (userGuess < secretNumber) {
+                message = 'Too low! Try again.';
+            } else {
+                message = 'Too high! Try again.';
+            }
+
+            document.getElementById('guessResult').innerText = message;
+        }
+    </script>
+</body>
+</html>
